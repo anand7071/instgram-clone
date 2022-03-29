@@ -8,22 +8,14 @@ export const Products = () => {
 
     const [products, setproducts] = useState([])
     const [filter, setFilter] = useState([]);
-    let componentMounted = true;
-
-    const getData = async () => {
-        const response = await fetch("https://s3-ap-southeast-1.amazonaws.com/he-public-data/instaf913f18.json");
-        if (componentMounted) {
-            setproducts(await response.clone().json())
-            setFilter(await response.json())
-            console.log(filter)
-        }
-        return () => {
-            componentMounted = false
-        }
-
-    }
 
     useEffect(() => {
+        const getData = async () => {
+            const response = await fetch("https://s3-ap-southeast-1.amazonaws.com/he-public-data/instaf913f18.json");
+
+                setproducts(await response.clone().json())
+                setFilter(await response.json())
+        }
         getData()
     }, [])
     const Showproducts = () => {
