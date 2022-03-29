@@ -25,7 +25,7 @@ export const Products = () => {
 
     useEffect(() => {
         getData()
-    },[])
+    }, [])
     const Showproducts = () => {
         return (
             <>
@@ -37,7 +37,7 @@ export const Products = () => {
                                     <div className="card" style={{ width: "18rem" }}>
                                         <img src={items.Image} className="card-img-top" alt="..." />
                                         <div className="card-body">
-                                            <p className="card-text">Likes {items.likes}</p>
+                                            <p className="card-text">Likes : {items.likes}</p>
                                             <p className="card-text">Post Date and Time {items.timestamp}</p>
                                         </div>
                                     </div>
@@ -51,19 +51,23 @@ export const Products = () => {
             </>
         )
     }
-    const sortData1=()=>{
-            const data1 = products.sort((a,b)=>a.likes-b.likes)
-            setFilter(data1)
+    const sortData1 = () => {
+        const data1 = products.sort((a, b) => a.likes - b.likes)
+        setFilter(data1)
 
     }
-    
+    // const sortData2 = () => {
+    //     setFilter(products)
 
-    const SortFunction = ()=>{
-        return(
+    // }
+
+
+    const SortFunction = () => {
+        return (
             <>
                 <div className="buttons">
-                    <button className="btn btn-outline-dark me-2" onClick={()=>{sortData1()}}>Sort By Likes</button>
-                    
+                    <button className="btn btn-outline-dark me-2" onClick={() => { sortData1() }}>Sort By Likes</button>
+                    {/* <button className="btn btn-outline-dark me-2" onClick={()=>{sortData2()}}>All</button> */}
                 </div>
             </>
         )
@@ -71,10 +75,10 @@ export const Products = () => {
     return (
         <>
             <h2>All Images</h2>
-            <div className="continer-fluid mt-5" style={{widh:"30%", margin:"auto"}}>
+            <div className="continer-fluid mt-5" style={{ margin: "auto" }}>
                 <div className="row text-centre">
-                    <SortFunction/>
-                    <Showproducts/>
+                    <SortFunction />
+                    <Showproducts />
 
                 </div>
             </div>
